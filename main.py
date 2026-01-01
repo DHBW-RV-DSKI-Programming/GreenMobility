@@ -37,8 +37,7 @@ class ECargoBike(Vehicle):
 
     def calculate_remaining_range(self) -> float:
         base_calculation = (self.battery_level * self.base_range) / 100
-        # Deduction: 2km per 10kg cargo
-        deduction = (self.cargo_kg // 10) * 2
+        deduction = (self.cargo_kg // 10) * 2 # floor division (the result is always an integer)
         return max(0.0, base_calculation - deduction)
 
 
